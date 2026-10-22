@@ -14,7 +14,8 @@ function Popup() {
 
   useEffect(() => {
     chrome.storage.local.get('lastDownload').then(({ lastDownload }) => {
-      if (lastDownload) setDownload({ id: lastDownload.id, state: 'in_progress', percent: null })
+      const last = lastDownload as { id: number } | undefined
+      if (last) setDownload({ id: last.id, state: 'in_progress', percent: null })
     })
   }, [])
 
