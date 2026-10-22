@@ -18,8 +18,12 @@ function Options() {
           chrome.storage.sync.set({ quality: e.target.value })
         }}
       >
+        <option>144p</option>
+        <option>240p</option>
         <option>360p</option>
+        <option>480p</option>
         <option>720p</option>
+        <option>1080p</option>
       </select>
     </label>
   )
