@@ -13,6 +13,12 @@ function Popup() {
   }, [])
 
   useEffect(() => {
+    chrome.storage.local.get('lastDownload').then(({ lastDownload }) => {
+      if (lastDownload) setDownload({ id: lastDownload.id, state: 'in_progress', percent: null })
+    })
+  }, [])
+
+  useEffect(() => {
     if (!download) return
     const refresh = () =>
       chrome.downloads.search({ id: download.id }).then(([d]) => {
